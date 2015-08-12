@@ -4,7 +4,6 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -17,8 +16,19 @@ public class GlobalThreadPool {
     private HandlerThread mHandlerThread;
     private Handler mHandler;
 
-    private static GlobalThreadPool sThreadPool = new GlobalThreadPool();
+//    public HandlerThread getHandlerThread() {
+//        return mHandlerThread;
+//    }
 
+    public static GlobalThreadPool getThreadPool() {
+        return sThreadPool;
+    }
+
+
+    private static GlobalThreadPool sThreadPool = new GlobalThreadPool();
+    public static GlobalThreadPool sharedPool() {
+        return sThreadPool;
+    }
 
     private GlobalThreadPool() {
         mExecutorService = Executors.newCachedThreadPool();
@@ -42,9 +52,16 @@ public class GlobalThreadPool {
         mHandlerThread.start();
     }
 
-    static public Handler getHandler() {
-        return sThreadPool.mHandler;
+    public Handler getHandler() {
+        return mHandler;
     }
+
+
+    //    static public Handler getHandler() {
+//        return sThreadPool.mHandler;
+//    }
+
+
 
 
 

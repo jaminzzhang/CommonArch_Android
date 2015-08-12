@@ -9,7 +9,7 @@ public abstract class BackgroundListener<T> extends BasicListener<T> {
 
 
     public BackgroundListener() {
-        super(GlobalThreadPool.getHandler());
+        super(GlobalThreadPool.sharedPool().getHandler());
     }
 
 

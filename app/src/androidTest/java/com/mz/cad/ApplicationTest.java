@@ -1,4 +1,4 @@
-package com.mz.cad_android;
+package com.mz.cad;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

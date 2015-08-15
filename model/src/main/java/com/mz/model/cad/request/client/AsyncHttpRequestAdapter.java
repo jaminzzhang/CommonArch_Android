@@ -1,9 +1,9 @@
-package com.mz.model.request.client;
+package com.mz.model.cad.request.client;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
-import com.mz.model.request.IBaseHTTPRequest;
+import com.mz.model.cad.request.IBaseHTTPRequest;
 
 import org.apache.http.Header;
 import org.apache.http.message.BasicHeader;
@@ -26,9 +26,9 @@ public class AsyncHttpRequestAdapter {
 
     public AsyncHttpRequestAdapter(IBaseHTTPRequest request) {
         this.mHTTPRequest = request;
-        this.mRequestParams = new RequestParams(request.getRequestBody());
+        this.mRequestParams = new RequestParams(request.getHttpBody());
 //            this.
-        HashMap<String, String> headerMap = request.getRequestHeader();
+        HashMap<String, String> headerMap = request.getHttpHeader();
         if (null != headerMap) {
             ArrayList<Header> headerArrayList = new ArrayList<>();
             for (Map.Entry<String, String> entry : headerMap.entrySet()) {
@@ -63,12 +63,14 @@ public class AsyncHttpRequestAdapter {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
                 mHTTPRequest.handleResponse(response);
+                mHTTPRequest.complete();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
                 mHTTPRequest.handleFailure(statusCode, throwable.getLocalizedMessage());
+                mHTTPRequest.complete();
             }
         };
 

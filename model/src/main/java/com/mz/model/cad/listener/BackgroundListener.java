@@ -1,6 +1,6 @@
-package com.mz.model.listener;
+package com.mz.model.cad.listener;
 
-import com.mz.model.thread.GlobalThreadPool;
+import com.mz.model.cad.thread.GlobalThreadPool;
 
 /**
  * Created by jaminzzhang on 6/10/15.

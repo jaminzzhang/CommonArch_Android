@@ -12,8 +12,10 @@
             android:id="@+id/city_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:textColor="#ffffff"
             android:textAppearance="?android:attr/textAppearanceLarge"/>
 
         <TextView
@@ -23,18 +25,19 @@
             android:layout_below="@+id/city_text"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
+            android:textColor="#cccccc"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="13sp"/>
 
 
-        <TextView
+
+        <ImageView
             android:id="@+id/weather_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="70sp"/>
+            android:scaleType="fitCenter"/>
 
 
         <TextView
@@ -42,19 +45,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/weather_icon"
+            android:layout_marginTop="20dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="40sp"
-            android:text="@string/zero_degree"/>
+            android:textColor="#ffffff"
+            android:textSize="40sp"/>
 
         <TextView
             android:id="@+id/details_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/weather_icon"
+            android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
+            android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text=""/>
+            />
 
 
     </RelativeLayout>

@@ -1,6 +1,6 @@
-package com.mz.model.request.client;
+package com.mz.model.cad.request.client;
 
-import com.mz.model.request.IBaseHTTPRequest;
+import com.mz.model.cad.request.IBaseHTTPRequest;
 
 /**
  * Created by Jamin on 8/6/15.

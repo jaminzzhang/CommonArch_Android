@@ -1,11 +1,11 @@
-package com.mz.model.request.client;
+package com.mz.model.cad.request.client;
 
 import android.content.Context;
 import android.os.Handler;
 import android.os.HandlerThread;
 
 import com.loopj.android.http.AsyncHttpClient;
-import com.mz.model.request.IBaseHTTPRequest;
+import com.mz.model.cad.request.IBaseHTTPRequest;
 
 /**
  * Created by Jamin on 8/6/15.

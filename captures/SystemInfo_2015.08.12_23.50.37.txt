@@ -1,0 +1,81 @@
+Applications Graphics Acceleration Info:
+Uptime: 358646094 Realtime: 1564380023
+
+** Graphics info for pid 18384 [com.mz.cad] **
+
+Recent DisplayList operations
+DrawRect
+DrawDisplayList
+  Save
+  ClipRect
+  DrawDisplayList
+    DrawDisplayList
+      DrawDisplayList
+        DrawDisplayList
+          DrawRect
+          Save
+          ClipRect
+          DrawDisplayList
+            DrawDisplayList
+              DrawDisplayList
+                DrawDisplayList
+                  Save
+                  ClipRect
+                  DrawText
+                  RestoreToCount
+          RestoreToCount
+        DrawPatch
+      DrawDisplayList
+        DrawRect
+        DrawDisplayList
+          DrawDisplayList
+            Save
+            ClipRect
+            DrawText
+            RestoreToCount
+      DrawPatch
+  RestoreToCount
+DrawRect
+DrawRect
+DrawRect
+DrawText
+DrawText
+DrawPatch
+DrawPatch
+
+(ms)                     total       count     average         max
+DrawRect                 17.68           3        5.89       17.58
+DrawText                 13.34           2        6.67       13.18
+DrawPatch                11.73           2        5.87       11.64
+
+Caches:
+Current memory usage / total memory usage (bytes):
+  TextureCache             9216 / 75497472
+  LayerCache                  0 / 52428800
+  BlurCache                  0 / 52428800
+  RenderBufferCache           0 /  8388608
+  GradientCache               0 /  3145728
+  PathCache                   0 / 33554432
+  TextDropShadowCache         0 /  6291456
+  PatchCache                192 /   131072
+  FontRenderer 0 A8     1048576 /  1048576
+  FontRenderer 0 RGBA         0 /        0
+  FontRenderer 0 total  1048576 /  1048576
+Other:
+  FboCache                    0 /       25
+Total memory usage:
+  1057984 bytes, 1.01 MB
+
+Profile data in ms:
+
+	com.mz.cad/com.mz.cad.MainActivity/android.view.ViewRootImpl@42abe008
+View hierarchy:
+
+  com.mz.cad/com.mz.cad.MainActivity/android.view.ViewRootImpl@42abe008
+  21 views, 1.39 kB of display lists, 1 frames rendered
+
+
+Total ViewRootImpl: 1
+Total Views:        21
+Total DisplayList:  1.39 kB
+

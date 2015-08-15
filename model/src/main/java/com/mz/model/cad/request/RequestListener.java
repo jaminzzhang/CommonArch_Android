@@ -1,4 +1,4 @@
-package com.mz.model.request;
+package com.mz.model.cad.request;
 
 /**
  * Created by Jamin on 8/5/15.

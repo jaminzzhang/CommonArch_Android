@@ -1,6 +1,6 @@
 package com.mz.model.weather;
 
-import com.mz.model.listener.IListener;
+import com.mz.model.cad.listener.IListener;
 
 /**
  * Created by Jamin on 8/5/15.
@@ -17,8 +17,8 @@ public class WeatherManager {
         mHandler = new WeatherHandler();
     }
 
-    public void fetchCurrentWeather(final IListener<WeatherInfo> listener) {
-        mHandler.requestCurrentWeather(listener);
+    public void fetchCurrentWeather(String cityId, final IListener<WeatherInfo> listener) {
+        mHandler.requestCurrentWeather(cityId, listener);
     }
 
 

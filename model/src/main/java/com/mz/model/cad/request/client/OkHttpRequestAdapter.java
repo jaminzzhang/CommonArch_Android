@@ -1,6 +1,6 @@
-package com.mz.model.request.client;
+package com.mz.model.cad.request.client;
 
-import com.mz.model.request.IBaseHTTPRequest;
+import com.mz.model.cad.request.IBaseHTTPRequest;
 import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.Request;
@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * Created by Jamin on 8/6/15.
@@ -25,15 +26,20 @@ public class OkHttpRequestAdapter {
         this.mHTTPRequest = request;
 
         MediaType mediaType = MediaType.parse(request.getContentType() + "; charset=utf-8");
-        JSONObject jsonObject = new JSONObject(request.getRequestBody());
-        RequestBody requestBody = RequestBody.create(mediaType, jsonObject.toString());
+        HashMap<String, Object> body = request.getHttpBody();
+        RequestBody requestBody = null;
+        if (null != body) {
+
+            JSONObject jsonObject = new JSONObject();
+            requestBody = RequestBody.create(mediaType, jsonObject.toString());
+        }
 
         Request.Builder builder = new Request.Builder()
                 .url(request.getURL())
                 .method(request.getHttpMethod(), requestBody);
 
-        if (null != request.getRequestHeader()) {
-            Headers headers = Headers.of(request.getRequestHeader());
+        if (null != request.getHttpHeader()) {
+            Headers headers = Headers.of(request.getHttpHeader());
             builder.headers(headers);
         }
 
@@ -64,6 +70,8 @@ public class OkHttpRequestAdapter {
         } else {
             this.mHTTPRequest.handleFailure(response.code(), response.message());
         }
+
+        this.mHTTPRequest.complete();
 
     }
 

@@ -1,4 +1,4 @@
-package com.mz.model.basic;
+package com.mz.model.cad.basic;
 
 /**
  * Created by Jamin on 8/6/15.

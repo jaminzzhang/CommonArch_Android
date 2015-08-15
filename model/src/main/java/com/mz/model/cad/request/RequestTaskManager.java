@@ -1,7 +1,7 @@
-package com.mz.model.request;
+package com.mz.model.cad.request;
 
 
-import com.mz.model.request.client.OKRequestClient;
+import com.mz.model.cad.request.client.OKRequestClient;
 
 import junit.framework.Assert;
 

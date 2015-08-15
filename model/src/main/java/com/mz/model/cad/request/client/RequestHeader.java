@@ -1,4 +1,4 @@
-package com.mz.model.request.client;
+package com.mz.model.cad.request.client;
 
 import org.apache.http.Header;
 import org.apache.http.HeaderElement;

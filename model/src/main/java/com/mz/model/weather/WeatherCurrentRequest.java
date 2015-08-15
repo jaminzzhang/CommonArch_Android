@@ -1,10 +1,9 @@
 package com.mz.model.weather;
 
-import android.os.Build;
 import android.util.Log;
 
-import com.mz.model.request.BaseHTTPRequest;
-import com.mz.model.request.RequestListener;
+import com.mz.model.cad.request.BaseHTTPRequest;
+import com.mz.model.cad.request.RequestListener;
 
 import org.json.JSONObject;
 
@@ -15,53 +14,59 @@ import java.util.HashMap;
  */
 public class WeatherCurrentRequest extends BaseHTTPRequest {
 
+    private String mCityId;
+    private WeatherInfo mWeatherInfo;
 
     public WeatherCurrentRequest(RequestListener requestListener) {
         super(requestListener);
     }
 
-    @Override
-    public String getURL() {
-        return "http://api.woqu.com/mobile";
+    public WeatherCurrentRequest(String cityId, RequestListener requestListener) {
+        super(requestListener);
+        mCityId = cityId;
+    }
+
+
+    public String getCityId() {
+        return mCityId;
+    }
+
+    public WeatherInfo getWeatherInfo() {
+        return mWeatherInfo;
     }
 
     @Override
-    public HashMap<String, String> getRequestHeader() {
+    public String getURL() {
+        return "http://api.openweathermap.org/data/2.5/weather?id=" + mCityId + "&units=Metric&lang=zh";
+    }
+
+
+    @Override
+    public String getHttpMethod() {
+        return "GET";
+    }
+
+    @Override
+    public HashMap<String, String> getHttpHeader() {
         return null;
     }
 
     @Override
-    public HashMap<String, Object> getRequestBody() {
+    public HashMap<String, Object> getHttpBody() {
 
-        HashMap<String, Object> reqHeader = new HashMap<>();
-        reqHeader.put("appid", "WQVISAAndroid");
-        reqHeader.put("bundle_id", "com.woqu.woqu");  //即Package Name
-        reqHeader.put("app_version", "1.3.4");
-        reqHeader.put("dev_mode", Build.DEVICE);
-        reqHeader.put("dev_uuid", "1");
-        reqHeader.put("network_type", 1);
-        reqHeader.put("client_ip", "192.168.0.1");
-        reqHeader.put("msg_seq", 1);
-        reqHeader.put("cmd", "list_activities");
-
-        HashMap<String, Object> reqBody = new HashMap<>();
-        reqBody.put("page_index", 0);
-        reqBody.put("page_size", 100);
-        reqBody.put("thumb_size", "500x300");
-
-
-
-        HashMap<String, Object> httpBody = new HashMap<>();
-        httpBody.put("Req_Header", reqHeader);
-        httpBody.put("Req_Body", reqBody);
-
-
-
-        return httpBody;
+        return null;
+//        HashMap<String, Object> httpBody = new HashMap<>();
+//        httpBody.put("id", mCityId);
+//        return httpBody;
     }
 
     @Override
     public void handleResponse(JSONObject response) {
+
         Log.d("Weather", response.toString());
+        this.mWeatherInfo = new WeatherInfo(response);
+
+
+
     }
 }

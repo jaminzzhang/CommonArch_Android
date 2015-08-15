@@ -1,6 +1,6 @@
-package com.mz.model.request;
+package com.mz.model.cad.request;
 
-import com.mz.model.basic.MZError;
+import com.mz.model.cad.basic.MZError;
 
 import org.json.JSONObject;
 
@@ -65,6 +65,22 @@ public abstract class BaseHTTPRequest implements IBaseHTTPRequest {
         RequestTaskManager.sharedInstance().sendRequest(this);
     }
 
+
+    @Override
+    public void cancel() {
+
+    }
+
+    @Override
+    public void complete() {
+        if (null != this.getError()) {
+            this.getRequestListener().onFailure(this);
+        } else {
+            this.getRequestListener().onSuccess(this);
+        }
+
+    }
+
     @Override
     public abstract String getURL();
 
@@ -80,19 +96,21 @@ public abstract class BaseHTTPRequest implements IBaseHTTPRequest {
     }
 
     @Override
-    public abstract HashMap<String, String> getRequestHeader();
+    public abstract HashMap<String, String> getHttpHeader();
 
     @Override
-    public abstract HashMap<String, Object> getRequestBody();
+    public abstract HashMap<String, Object> getHttpBody();
 
 
     @Override
     public abstract void handleResponse(JSONObject response);
 
+
     @Override
     public void handleFailure(int statusCode, String errorMsg) {
         MZError error = new MZError(statusCode, errorMsg);
         this.mError = error;
-        this.getRequestListener().onFailure(this);
     }
+
+
 }

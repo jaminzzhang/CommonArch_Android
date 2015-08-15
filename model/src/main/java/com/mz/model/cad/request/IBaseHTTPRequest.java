@@ -1,4 +1,4 @@
-package com.mz.model.request;
+package com.mz.model.cad.request;
 
 import org.json.JSONObject;
 
@@ -42,6 +42,18 @@ public interface IBaseHTTPRequest {
 
 
     /**
+     * Cancel the request
+     */
+    public void cancel();
+
+
+    /**
+     * Complete the request
+     */
+    public void complete();
+
+
+    /**
      * request url
      * @return
      */
@@ -60,8 +72,8 @@ public interface IBaseHTTPRequest {
     public String getContentType();
 
 
-    public HashMap<String, String> getRequestHeader();
-    public HashMap<String, Object> getRequestBody();
+    public HashMap<String, String> getHttpHeader();
+    public HashMap<String, Object> getHttpBody();
 
 
     /**
@@ -76,7 +88,6 @@ public interface IBaseHTTPRequest {
      * @param statusCode
      */
     public void handleFailure(int statusCode, String errorMsg);
-
 
 
 }

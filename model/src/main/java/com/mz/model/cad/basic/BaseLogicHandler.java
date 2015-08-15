@@ -1,8 +1,8 @@
-package com.mz.model.basic;
+package com.mz.model.cad.basic;
 
 import android.os.*;
 
-import com.mz.model.thread.GlobalThreadPool;
+import com.mz.model.cad.thread.GlobalThreadPool;
 
 /**
  * Created by Jamin on 8/7/15.
